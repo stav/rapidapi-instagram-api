@@ -105,7 +105,12 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'Inspire',
           to: '/inspire'
-        }
+        },
+        {
+          icon: 'mdi-instagram',
+          title: 'Instagram',
+          to: '/instagram'
+        },
       ],
       miniVariant: false,
       right: true,
