@@ -12,7 +12,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "nuxt": "^2.14.0"
+    "nuxt": "^2.14.0",
+    "vue-json-component": "^0.4.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
