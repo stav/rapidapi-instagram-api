@@ -34,6 +34,30 @@
           <v-col cols="12">
             <json-view :data="result" />
           </v-col>
+          <v-col
+            v-for="(edge, i) in edges"
+            :key="i"
+            cols="12"
+          >
+            <v-card>
+              <div class="d-flex flex-no-wrap justify-space-between">
+                <div>
+                  <v-card-title
+                    class="headline"
+                    v-text="edge.node.full_name"
+                  />
+                  <v-card-subtitle v-text="edge.node.username" />
+                  <v-chip filter :disabled="!edge.node.is_private" :input-value="edge.node.is_private"> Private </v-chip>
+                  <v-chip filter :disabled="!edge.node.is_verified" :input-value="edge.node.is_verified"> Verified </v-chip>
+                  <v-chip filter :disabled="!edge.node.followed_by_viewer" :input-value="edge.node.followed_by_viewer"> Followed </v-chip>
+                  <v-chip filter :disabled="!edge.node.requested_by_viewer" :input-value="edge.node.requested_by_viewer"> Requested </v-chip>
+                </div>
+                <v-avatar class="ma-3" size="125">
+                  <v-img :src="edge.node.profile_pic_url" />
+                </v-avatar>
+              </div>
+            </v-card>
+          </v-col>
         </v-row>
       </v-container>
     </v-card>
@@ -51,6 +75,22 @@ export default {
   data () {
     return {
       result: {},
+    }
+  },
+
+  computed: {
+    edges () {
+      console.log(this.result)
+      if (
+        this.result &&
+        this.result.data &&
+        this.result.data.shortcode_media &&
+        this.result.data.shortcode_media.edge_liked_by
+      ) {
+        return this.result.data.shortcode_media.edge_liked_by.edges
+      } else {
+        return []
+      }
     }
   },
 
