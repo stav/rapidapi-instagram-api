@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-card class="mx-auto">
+    <v-card :loading="loading" class="mx-auto">
       <v-app-bar>
         <v-toolbar-title>
           <v-icon size="xx-large">
@@ -75,6 +75,7 @@ export default {
   data () {
     return {
       result: {},
+      loading: false,
     }
   },
 
@@ -102,6 +103,8 @@ export default {
       this.result = instagram
     },
     async getInstagramAPIData () {
+      this.loading = true
+
       const query = {
         short_code: 'BzinsTanXXv', // use any shortcode you want
       }
@@ -116,6 +119,7 @@ export default {
 
       const response = await fetch(url.toString(), { headers })
       this.result = await response.json()
+      this.loading = false
     },
   },
 }
