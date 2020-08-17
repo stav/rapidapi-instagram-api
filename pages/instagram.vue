@@ -1,42 +1,42 @@
 <template>
   <v-layout>
-    <v-flex class="text-center">
-      <v-icon size="100pt">
-        mdi-instagram
-      </v-icon>
-    </v-flex>
-    <v-flex>
-      <v-card>
-        <v-card-title class="headline">
-          Let's get some data
-        </v-card-title>
-        <v-card-actions>
-          <v-btn
-            title="Clear"
-            @click="clear"
-          >
-            X
-          </v-btn>
-          <v-btn
-            title="Go get the fake data"
-            color="primary"
-            @click="getInstagramFakeData"
-          >
-            Fake
-          </v-btn>
-          <v-btn
-            title="Go get the real data"
-            color="success"
-            @click="getInstagramAPIData"
-          >
-            Fetch
-          </v-btn>
-        </v-card-actions>
-        <v-card-text>
-          <json-view :data="result" />
-        </v-card-text>
-      </v-card>
-    </v-flex>
+    <v-card class="mx-auto">
+      <v-app-bar>
+        <v-toolbar-title>
+          <v-icon size="xx-large">
+            mdi-instagram
+          </v-icon>
+        </v-toolbar-title>
+        <v-spacer />
+        <v-btn
+          title="Clear"
+          @click="clear"
+        >
+          X
+        </v-btn>
+        <v-btn
+          title="Go get the fake data"
+          color="primary"
+          @click="getInstagramFakeData"
+        >
+          Fake
+        </v-btn>
+        <v-btn
+          title="Go get the real data"
+          color="success"
+          @click="getInstagramAPIData"
+        >
+          Fetch
+        </v-btn>
+      </v-app-bar>
+      <v-container>
+        <v-row dense>
+          <v-col cols="12">
+            <json-view :data="result" />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-card>
   </v-layout>
 </template>
 
